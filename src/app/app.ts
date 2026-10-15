@@ -29,12 +29,12 @@ export class App {
     const host = inject(ElementRef<HTMLElement>);
     const sub = inject(Router).events.subscribe((e) => {
       if (!(e instanceof NavigationEnd)) return;
-      requestAnimationFrame(() => {
+      setTimeout(() => {
         const el = (host.nativeElement as HTMLElement).querySelector<HTMLElement>('.nav a.active');
         const nav = el?.closest('ul');
         if (!el || !nav || nav.scrollWidth <= nav.clientWidth) return;
         nav.scrollTo({ left: el.offsetLeft - (nav.clientWidth - el.clientWidth) / 2 });
-      });
+      }, 60);
     });
     inject(DestroyRef).onDestroy(() => sub.unsubscribe());
   }
