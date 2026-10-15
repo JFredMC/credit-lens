@@ -22,6 +22,11 @@ export const routes: Routes = [
     loadComponent: () => import('./features/products/product-detail').then((m) => m.ProductDetail),
   },
   {
+    path: 'alertas',
+    title: 'Alertas · Credit Lens',
+    loadComponent: () => import('./features/alerts/alerts').then((m) => m.Alerts),
+  },
+  {
     path: 'calendario',
     title: 'Calendario de pagos · Credit Lens',
     loadComponent: () => import('./features/calendar/calendar').then((m) => m.Calendar),

@@ -205,3 +205,17 @@
     padding: 1.8rem 2rem 2.5rem;
   }
 }
+
+.badge {
+  min-width: 1.2rem;
+  height: 1.2rem;
+  padding: 0 0.3rem;
+  border-radius: 999px;
+  background: var(--bad);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  display: inline-grid;
+  place-items: center;
+  margin-left: auto;
+}

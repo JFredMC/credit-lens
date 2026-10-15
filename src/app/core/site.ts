@@ -7,6 +7,8 @@ export interface NavItem {
   path: string;
   label: string;
   icon: string;
+  /** Optional live counter shown next to the label. */
+  badge?: 'alerts';
 }
 
 /** Main navigation. Icons are SVG path data (24x24, stroke). */
@@ -14,6 +16,12 @@ export const NAV: NavItem[] = [
   { path: '/', label: 'Resumen', icon: 'M3 12l9-8 9 8M5 10v10h14V10' },
   { path: '/puntaje', label: 'Mi puntaje', icon: 'M12 3a9 9 0 109 9M12 12l5-5M12 3v3' },
   { path: '/obligaciones', label: 'Obligaciones', icon: 'M3 6h18M3 12h18M3 18h12' },
+  {
+    path: '/alertas',
+    label: 'Alertas',
+    icon: 'M6 8a6 6 0 1112 0c0 7 3 9 3 9H3s3-2 3-9M10 21h4',
+    badge: 'alerts',
+  },
   { path: '/calendario', label: 'Calendario', icon: 'M3 5h18v16H3zM3 10h18M8 3v4M16 3v4' },
   {
     path: '/simulador',
