@@ -12,4 +12,6 @@ export interface NavItem {
 /** Main navigation. Icons are SVG path data (24x24, stroke). */
 export const NAV: NavItem[] = [
   { path: '/', label: 'Resumen', icon: 'M3 12l9-8 9 8M5 10v10h14V10' },
+  { path: '/puntaje', label: 'Mi puntaje', icon: 'M12 3a9 9 0 109 9M12 12l5-5M12 3v3' },
+  { path: '/obligaciones', label: 'Obligaciones', icon: 'M3 6h18M3 12h18M3 18h12' },
 ];
