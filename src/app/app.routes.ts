@@ -27,6 +27,11 @@ export const routes: Routes = [
     loadComponent: () => import('./features/alerts/alerts').then((m) => m.Alerts),
   },
   {
+    path: 'huella',
+    title: 'Huella de consulta · Credit Lens',
+    loadComponent: () => import('./features/footprint/footprint-page').then((m) => m.FootprintPage),
+  },
+  {
     path: 'calendario',
     title: 'Calendario de pagos · Credit Lens',
     loadComponent: () => import('./features/calendar/calendar').then((m) => m.Calendar),

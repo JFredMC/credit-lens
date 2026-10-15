@@ -114,7 +114,7 @@ export function averageAgeMonths(products: Product[], asOf: Date): number {
 }
 
 export function recentInquiries(inquiries: Inquiry[], asOf: Date, months = 6): number {
-  return inquiries.filter((q) => monthsBetween(parseISO(q.date), asOf) < months).length;
+  return inquiries.filter((q) => !q.self && monthsBetween(parseISO(q.date), asOf) < months).length;
 }
 
 export function computeScore({ products, inquiries, asOf }: ScoreInput): ScoreResult {

@@ -26,7 +26,12 @@ export const PERSONAS: Persona[] = [
     city: 'Medellín',
     monthlyIncome: 6_800_000,
     scoreTrend: [842, 846, 851, 849, 855, 862, 866, 870, 873, 877, 880, 885],
-    inquiries: [{ date: '2026-03-12', entity: 'Banco Aurora', purpose: 'Estudio de crédito' }],
+    inquiries: [
+      { date: '2026-09-14', entity: 'Tú', purpose: 'Consulta propia', self: true },
+      { date: '2026-04-02', entity: 'Tú', purpose: 'Consulta propia', self: true },
+      { date: '2026-03-12', entity: 'Banco Aurora', purpose: 'Estudio de crédito' },
+      { date: '2025-08-20', entity: 'AutoCrédito Andes', purpose: 'Crédito de vehículo' },
+    ],
     products: [
       {
         id: 'l-card-1',
@@ -107,7 +112,10 @@ export const PERSONAS: Persona[] = [
     monthlyIncome: 3_200_000,
     scoreTrend: [468, 474, 489, 502, 521, 533, 546, 555, 563, 571, 578, 584],
     inquiries: [
+      { date: '2026-09-30', entity: 'Tú', purpose: 'Consulta propia', self: true },
+      { date: '2026-07-15', entity: 'Tú', purpose: 'Consulta propia', self: true },
       { date: '2026-06-02', entity: 'Financiera Ceiba', purpose: 'Solicitud de tarjeta' },
+      { date: '2026-01-25', entity: 'Coop. Guayacán', purpose: 'Crédito de libre inversión' },
       { date: '2026-08-19', entity: 'Coop. Guayacán', purpose: 'Estudio de crédito' },
     ],
     products: [
@@ -190,7 +198,10 @@ export const PERSONAS: Persona[] = [
     monthlyIncome: 4_100_000,
     scoreTrend: [574, 566, 557, 548, 536, 521, 505, 490, 472, 455, 437, 418],
     inquiries: [
+      { date: '2026-08-05', entity: 'Tú', purpose: 'Consulta propia', self: true },
       { date: '2026-05-04', entity: 'Banco Litoral', purpose: 'Solicitud de tarjeta' },
+      { date: '2025-11-01', entity: 'Fintech Colibrí', purpose: 'Crédito digital' },
+      { date: '2025-06-10', entity: 'Banco Aurora', purpose: 'Solicitud de tarjeta' },
       { date: '2026-06-21', entity: 'Financiera Ceiba', purpose: 'Crédito de libre inversión' },
       { date: '2026-07-30', entity: 'Fintech Colibrí', purpose: 'Crédito digital' },
       { date: '2026-09-02', entity: 'Coop. Guayacán', purpose: 'Estudio de crédito' },

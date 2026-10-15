@@ -22,6 +22,11 @@ export const NAV: NavItem[] = [
     icon: 'M6 8a6 6 0 1112 0c0 7 3 9 3 9H3s3-2 3-9M10 21h4',
     badge: 'alerts',
   },
+  {
+    path: '/huella',
+    label: 'Huella de consulta',
+    icon: 'M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zM12 9a3 3 0 100 6 3 3 0 000-6z',
+  },
   { path: '/calendario', label: 'Calendario', icon: 'M3 5h18v16H3zM3 10h18M8 3v4M16 3v4' },
   {
     path: '/simulador',

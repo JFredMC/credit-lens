@@ -31,6 +31,7 @@ export function buildAlerts(p: Persona, asOf: Date, utilThreshold = 0.7): Credit
   const asOfIso = toISO(asOf);
 
   for (const q of p.inquiries) {
+    if (q.self) continue;
     const d = parseISO(q.date);
     if (asOf.getTime() - d.getTime() > 90 * DAY) continue;
     out.push({
@@ -39,7 +40,8 @@ export function buildAlerts(p: Persona, asOf: Date, utilThreshold = 0.7): Credit
       severity: 'info',
       date: q.date,
       title: `${q.entity} consultó tu historial`,
-      body: `Motivo: ${q.purpose.toLowerCase()}. Si no reconoces esta consulta, puedes presentar un reclamo.`,
+      body: `Motivo: ${q.purpose.toLowerCase()}. Si no la reconoces, revisa tu huella de consulta.`,
+      link: '/huella',
     });
   }
 
