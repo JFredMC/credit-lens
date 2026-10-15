@@ -78,6 +78,7 @@ export class LineChart {
     let hi = Math.max(...v);
     const span = Math.max(hi - lo, 1);
     lo = Math.floor((lo - span * 0.15) / 10) * 10;
+    if (Math.min(...v) >= 0) lo = Math.max(0, lo);
     hi = Math.ceil((hi + span * 0.15) / 10) * 10;
     return { lo, hi };
   });

@@ -21,5 +21,20 @@ export const routes: Routes = [
     title: 'Detalle de obligación · Credit Lens',
     loadComponent: () => import('./features/products/product-detail').then((m) => m.ProductDetail),
   },
+  {
+    path: 'simulador',
+    title: 'Simulador · Credit Lens',
+    loadComponent: () => import('./features/simulator/simulator').then((m) => m.Simulator),
+  },
+  {
+    path: 'plan-deudas',
+    title: 'Plan para salir de deudas · Credit Lens',
+    loadComponent: () => import('./features/payoff/payoff').then((m) => m.Payoff),
+  },
+  {
+    path: 'uso-de-cupos',
+    title: 'Uso de cupos · Credit Lens',
+    loadComponent: () => import('./features/utilization/utilization').then((m) => m.Utilization),
+  },
   { path: '**', redirectTo: '' },
 ];

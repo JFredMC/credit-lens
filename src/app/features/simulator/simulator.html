@@ -1,0 +1,158 @@
+<header class="page-head">
+  <div>
+    <p class="eyebrow">Simulador</p>
+    <h1>¿Qué pasa si…?</h1>
+    <p class="lead">
+      Mueve los controles y mira al instante cómo cambiaría tu puntaje ficticio. Nada de esto se
+      guarda ni afecta tus datos.
+    </p>
+  </div>
+  <button type="button" class="btn" (click)="reset()">Reiniciar</button>
+</header>
+
+<div class="layout">
+  <section class="controls">
+    @if (late().length) {
+      <article class="card">
+        <h2>Ponerme al día</h2>
+        @for (p of late(); track p.id) {
+          <label class="check">
+            <input
+              type="checkbox"
+              [checked]="catchUp()[p.id]"
+              (change)="toggle(catchUp, p.id, $any($event.target).checked)"
+              [attr.data-testid]="'catchup-' + p.id"
+            />
+            <span>
+              <strong>{{ p.entity }}</strong> · pagar {{ cop(p.overdueAmount) }} vencidos
+            </span>
+          </label>
+        }
+      </article>
+    }
+
+    <article class="card">
+      <h2>Abonar a mis deudas</h2>
+      @for (p of payable(); track p.id) {
+        <div class="field">
+          <label [for]="'pay-' + p.id">
+            {{ p.entity }} <span class="muted">· {{ typeLabel[p.type] }}</span>
+          </label>
+          <input
+            type="range"
+            [id]="'pay-' + p.id"
+            min="0"
+            [max]="p.balance"
+            [step]="50000"
+            [value]="pay()[p.id] ?? 0"
+            (input)="setPay(p.id, $any($event.target).value)"
+          />
+          <span class="hint num"> Abono {{ cop(pay()[p.id] ?? 0) }} de {{ cop(p.balance) }} </span>
+        </div>
+      }
+    </article>
+
+    <article class="card">
+      <h2>Otros escenarios</h2>
+      <div class="field">
+        <label for="miss">Dejar de pagar una cuota (30 días de mora)</label>
+        <select id="miss" [value]="miss()" (change)="miss.set($any($event.target).value)">
+          <option value="">Ninguna</option>
+          @for (p of open(); track p.id) {
+            <option [value]="p.id">{{ p.entity }} · {{ typeLabel[p.type] }}</option>
+          }
+        </select>
+      </div>
+      <div class="field">
+        <label for="inq">Solicitar crédito en varias entidades</label>
+        <input
+          id="inq"
+          type="range"
+          min="0"
+          max="6"
+          [value]="inquiries()"
+          (input)="inquiries.set(num($any($event.target).value))"
+        />
+        <span class="hint">{{ inquiries() }} solicitud(es) nuevas</span>
+      </div>
+      <div class="field">
+        <span class="label">Cerrar un producto</span>
+        @for (p of open(); track p.id) {
+          <label class="check">
+            <input
+              type="checkbox"
+              [checked]="close()[p.id]"
+              (change)="toggle(close, p.id, $any($event.target).checked)"
+            />
+            <span>{{ p.entity }} · {{ typeLabel[p.type] }}</span>
+          </label>
+        }
+      </div>
+      <label class="check">
+        <input
+          type="checkbox"
+          [checked]="newLoan()"
+          (change)="newLoan.set($any($event.target).checked)"
+          data-testid="new-loan"
+        />
+        <span>Sacar un crédito nuevo</span>
+      </label>
+      @if (newLoan()) {
+        <div class="row">
+          <div class="field">
+            <label for="lt">Tipo</label>
+            <select id="lt" (change)="loanType.set($any($event.target).value)">
+              <option value="CONSUMER">Crédito de consumo</option>
+              <option value="CARD">Tarjeta de crédito</option>
+              <option value="VEHICLE">Crédito de vehículo</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="la">Monto</label>
+            <input
+              id="la"
+              type="number"
+              min="500000"
+              step="500000"
+              [value]="loanAmount()"
+              (input)="loanAmount.set(num($any($event.target).value))"
+            />
+          </div>
+        </div>
+      }
+    </article>
+  </section>
+
+  <aside class="card result" aria-live="polite">
+    <h2>Resultado</h2>
+    <app-score-gauge [score]="result().after.score" [band]="result().after.band" />
+    <p class="delta" [class]="result().delta > 0 ? 'up' : result().delta < 0 ? 'down' : ''">
+      <span class="num" data-testid="sim-delta">
+        {{ result().delta > 0 ? '+' : '' }}{{ result().delta }}
+      </span>
+      puntos · de {{ result().before.score }} a {{ result().after.score }}
+    </p>
+    <ul class="diffs">
+      @for (f of factorDiff(); track f.label) {
+        <li>
+          <span>{{ f.label }}</span>
+          <span class="num" [class]="f.diff > 0 ? 'up' : f.diff < 0 ? 'down' : 'muted'">
+            {{ f.diff > 0 ? '+' : '' }}{{ f.diff }}
+          </span>
+        </li>
+      }
+    </ul>
+    <p class="small muted">
+      Estimación con el modelo educativo de Credit Lens. Los cambios reales dependen de cada central
+      y tardan en reflejarse.
+    </p>
+  </aside>
+</div>
+
+<div class="mobile-bar" aria-hidden="true">
+  <span>Puntaje simulado</span>
+  <strong class="num">{{ result().before.score }} → {{ result().after.score }}</strong>
+  <span class="chip num" [class]="result().delta > 0 ? 'good' : result().delta < 0 ? 'bad' : ''">
+    {{ result().delta > 0 ? '+' : '' }}{{ result().delta }}
+  </span>
+</div>
