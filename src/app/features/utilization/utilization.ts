@@ -36,12 +36,12 @@ import { cardUsage } from '../../domain/utilization';
         </div>
         @if (u.toTarget > 0) {
           <p class="callout">
-            Abona <strong class="num">{{ cop(u.toTarget) }}</strong> en total para quedar en 30 %.
-            Empieza por la tarjeta más llena.
+            Abona <strong class="num">{{ cop(u.toTarget) }}</strong> en total para quedar en
+            30&nbsp;%. Empieza por la tarjeta más llena.
           </p>
         } @else {
           <p class="callout">
-            Vas muy bien: estás por debajo del 30 %. Si puedes, mantente cerca del 10 %.
+            Vas muy bien: estás por debajo del 30&nbsp;%. Si puedes, mantente cerca del 10&nbsp;%.
           </p>
         }
       </article>
