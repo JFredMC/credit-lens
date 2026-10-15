@@ -5,6 +5,7 @@ Demo app (Spanish UI, English code) inspired by the Colombian consumer credit-bu
 Brand: JFredDev — discreet footer/“Hecho por JFredDev” link + portfolio link (new tab), same pattern as Cuadre/Ñapa/CENTINELA.
 
 ## 1. Review of current repo (credit-history / Expediente)
+
 - 18 commits. Angular 22 (zoneless, standalone, signals) + Tailwind 4 + Vitest; NestJS 11 backend skeleton; GitHub Pages deploy workflow. npm (package-lock), not pnpm.
 - Frontend (~1.1k LOC): dashboard (score 150–950, KPIs), history, timeline, creditors + detail, alerts, report export (JSON/CSV), dark mode, hand-made SVG charts (line/donut/bar).
 - Good to keep: `CREDIT_API` injection token with Mock/Http implementations (clean demo-mode switch), domain model (CreditProduct, Creditor, CreditEvent, PaymentBehavior 24-month history, ScorePoint, Alert), chart components idea, Spanish labels map.
@@ -12,6 +13,7 @@ Brand: JFredDev — discreet footer/“Hecho por JFredDev” link + portfolio li
 - Verdict: don’t fork; start a clean repo, port the model + mock-API pattern + chart ideas.
 
 ## 2. Public context (what the real app offers / pain points)
+
 - DataCrédito Experian consumer: score + historia de crédito, alertas (consultas/cambios), “Mi Plan”/plans de pago (paid tiers), simulador de score, huella de consulta (who consulted you), hábito de pago per obligation, reclamos online, ofertas de crédito.
 - Common complaints: paywalls for basic info, confusing score with no actionable “why”, dated UI, slow/opaque reclamos, upselling, hard to see when a negative report expires.
 - Legal context to surface as education (not legal advice):
@@ -20,12 +22,14 @@ Brand: JFredDev — discreet footer/“Hecho por JFredDev” link + portfolio li
   - Ley 1581 de 2012 (personal data) referenced in privacy note.
 
 ## 3. Proposed repo name (all verified free under JFredMC)
+
 1. **credit-lens** (recommended) — product name “Credit Lens”/UI tagline “Tu crédito, claro”.
 2. score-lens
 3. credlens
-(Also free: credito-claro, but not English.)
+   (Also free: credito-claro, but not English.)
 
 ## 4. Architecture
+
 - Monorepo, **pnpm workspaces**: `apps/web` (Angular 22, zoneless, signals, Tailwind 4), `apps/api` (NestJS 11, later), `packages/core` (pure TS domain + calculators: score model, simulators, payoff, permanence calculator — shared and unit-tested with Vitest).
 - Demo mode default: `CreditApi` token → `DemoCreditApi` (seeded fictional profiles, persisted in localStorage, “Reiniciar demo”). `HttpCreditApi` later.
 - Charts: lightweight custom SVG (keep) or ngx-echarts only if needed.
@@ -34,6 +38,7 @@ Brand: JFredDev — discreet footer/“Hecho por JFredDev” link + portfolio li
 - Later: API on Render + Supabase/Neon (Postgres, Prisma/TypeORM), auth, per-user data entry.
 
 ## 5. Modules & screens (Spanish UI)
+
 1. **Inicio / Resumen** — score gauge, change vs last month, 4 KPIs, next payments, top 3 actions.
 2. **Mi puntaje (explicador)** — transparent fictional model with weighted factors (hábito de pago, utilización, antigüedad, consultas recientes, mezcla, moras activas); each factor: impact, status, “cómo mejorar”.
 3. **Simulador “¿Qué pasa si…?”** — pay X on a card, close a product, open a loan, 3 new inquiries, clear a mora → projected score range.
@@ -51,6 +56,7 @@ Brand: JFredDev — discreet footer/“Hecho por JFredDev” link + portfolio li
 15. **Ajustes** — tema, perfil demo selector (3 personas: “Buen pagador”, “En recuperación”, “Sobreendeudado”), disclaimer.
 
 ## 6. Phases (one PR per area, squash-merge, CI green, screenshots)
+
 - P0 Scaffold: pnpm monorepo, Angular app, core package, CI, Pages deploy, brand + disclaimer banner, README.
 - P1 Domain + demo data: models, 3 seeded personas, DemoCreditApi.
 - P2 Resumen + Mi puntaje + Obligaciones (MVP core screens).
@@ -61,4 +67,5 @@ Brand: JFredDev — discreet footer/“Hecho por JFredDev” link + portfolio li
 - P7 (optional) NestJS API + Postgres on Render/Supabase, auth, manual data entry.
 
 ## 7. MVP for GitHub Pages demo
+
 P0–P3 + permanence calculator + claim letter (PDF) — i.e. Resumen, Mi puntaje, Obligaciones, Simulador, Plan de deudas, Reclamos; 3 fictional personas; persistent “Demo — datos ficticios, sin afiliación con DataCrédito/Experian” badge.
