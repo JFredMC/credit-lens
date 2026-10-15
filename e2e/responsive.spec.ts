@@ -8,6 +8,7 @@ const routes = [
   './plan-deudas',
   './uso-de-cupos',
   './permanencia',
+  './reclamos',
   './fuentes',
 ];
 

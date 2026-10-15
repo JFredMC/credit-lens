@@ -1,0 +1,174 @@
+<header class="page-head">
+  <div>
+    <p class="eyebrow">Reclamos</p>
+    <h1>Derecho de petición en 3 pasos</h1>
+    <p class="lead">
+      Elige tu caso, revisa los datos y descarga la carta en PDF lista para radicar ante la entidad
+      que te reportó o ante la central de riesgo.
+    </p>
+  </div>
+</header>
+
+<div class="layout">
+  <section class="form">
+    <article class="card">
+      <h2><span class="step">1</span> ¿Qué pasó?</h2>
+      <div class="types" role="radiogroup" aria-label="Tipo de reclamo">
+        @for (t of types; track t.id) {
+          <label class="type" [class.on]="type() === t.id">
+            <input
+              type="radio"
+              name="ctype"
+              [value]="t.id"
+              [checked]="type() === t.id"
+              (change)="type.set(t.id)"
+              [attr.data-testid]="'type-' + t.id"
+            />
+            <strong>{{ t.label }}</strong>
+            <span class="small muted">{{ t.hint }}</span>
+          </label>
+        }
+      </div>
+    </article>
+
+    <article class="card">
+      <h2><span class="step">2</span> Tus datos</h2>
+      <div class="field">
+        <label for="prod">Obligación</label>
+        <select id="prod" (change)="productId.set($any($event.target).value)">
+          @for (p of store.persona().products; track p.id) {
+            <option [value]="p.id" [selected]="p.id === productId()">
+              {{ p.entity }} · {{ typeLabel[p.type] }}
+            </option>
+          }
+        </select>
+      </div>
+      <div class="two">
+        <div class="field">
+          <label for="fn">Nombre completo</label>
+          <input id="fn" [value]="fullName()" (input)="fullName.set($any($event.target).value)" />
+        </div>
+        <div class="field">
+          <label for="doc">Cédula</label>
+          <input
+            id="doc"
+            [value]="documentNumber()"
+            (input)="documentNumber.set($any($event.target).value)"
+          />
+        </div>
+        <div class="field">
+          <label for="city">Ciudad</label>
+          <input id="city" [value]="city()" (input)="city.set($any($event.target).value)" />
+        </div>
+        <div class="field">
+          <label for="to">Dirigida a</label>
+          <input id="to" [value]="recipient()" (input)="recipient.set($any($event.target).value)" />
+        </div>
+        <div class="field">
+          <label for="addr">Dirección</label>
+          <input id="addr" [value]="address()" (input)="address.set($any($event.target).value)" />
+        </div>
+        <div class="field">
+          <label for="mail">Correo</label>
+          <input
+            id="mail"
+            type="email"
+            [value]="email()"
+            (input)="email.set($any($event.target).value)"
+          />
+        </div>
+      </div>
+      <div class="field">
+        <label for="facts">Hechos (uno por línea)</label>
+        <textarea
+          id="facts"
+          rows="5"
+          [value]="facts()"
+          (input)="facts.set($any($event.target).value)"
+        ></textarea>
+        <span class="hint">Reemplaza lo que está entre [corchetes] con tus datos.</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <h2><span class="step">3</span> Radica y haz seguimiento</h2>
+      <div class="field">
+        <label for="filed">Fecha de radicación</label>
+        <input
+          id="filed"
+          type="date"
+          [value]="filed()"
+          (input)="filed.set($any($event.target).value)"
+        />
+      </div>
+      <ol class="timeline" data-testid="deadlines">
+        <li>
+          <strong>{{ date(deadlines().legend) }}</strong
+          ><span>Debe aparecer «reclamo en trámite» (2 días hábiles)</span>
+        </li>
+        <li>
+          <strong>{{ date(deadlines().answer) }}</strong
+          ><span>Plazo para responderte (15 días hábiles)</span>
+        </li>
+        <li>
+          <strong>{{ date(deadlines().extended) }}</strong
+          ><span>Máximo si te informan prórroga (+8 días hábiles)</span>
+        </li>
+      </ol>
+      <p class="small muted">
+        Días hábiles estimados excluyendo fines de semana y festivos de Colombia. Si no responden a
+        tiempo, se entiende resuelto a tu favor y puedes acudir a la SIC (o a la Superintendencia
+        Financiera si la entidad es vigilada por ella). <a routerLink="/fuentes">Fuentes</a>
+      </p>
+    </article>
+  </section>
+
+  <aside class="preview">
+    <div class="actions">
+      <button
+        type="button"
+        class="btn primary"
+        (click)="download()"
+        [disabled]="busy()"
+        data-testid="download-pdf"
+      >
+        {{ busy() ? 'Generando…' : 'Descargar PDF' }}
+      </button>
+    </div>
+    <article class="paper" aria-label="Vista previa de la carta">
+      @for (l of header(); track $index) {
+        <p class="h">{{ l }}</p>
+      }
+      <p class="subject"><strong>Asunto:</strong> {{ letter().subject }}</p>
+      <p>{{ letter().opening }}</p>
+      <h3>Hechos</h3>
+      <ol>
+        @for (f of letter().facts; track $index) {
+          <li>{{ f }}</li>
+        }
+      </ol>
+      <h3>Peticiones</h3>
+      <ol>
+        @for (r of letter().requests; track $index) {
+          <li>{{ r }}</li>
+        }
+      </ol>
+      <h3>Fundamentos</h3>
+      <ul>
+        @for (g of letter().grounds; track $index) {
+          <li>{{ g }}</li>
+        }
+      </ul>
+      @for (c of letter().closing; track $index) {
+        <p>{{ c }}</p>
+      }
+      <p class="sign">
+        Atentamente,<br /><br /><strong>{{ fullName() }}</strong
+        ><br />C.C. {{ documentNumber() }}
+      </p>
+    </article>
+    <p class="small muted">
+      Plantilla educativa con datos ficticios. Revísala antes de usarla; no es asesoría legal.
+    </p>
+  </aside>
+</div>
