@@ -1,0 +1,85 @@
+<header class="page-head">
+  <div>
+    <p class="eyebrow">Resumen</p>
+    <h1>Hola, {{ firstName() }}</h1>
+    <p class="lead">
+      Así se ve tu crédito al {{ date(store.asOfIso) }}. Toca cada tarjeta para ver el detalle.
+    </p>
+  </div>
+  <span class="chip brand">{{ store.persona().shortLabel }}</span>
+</header>
+
+<section class="hero grid-2">
+  <article class="card score-card">
+    <div class="score-top">
+      <h2>Tu puntaje</h2>
+      <span class="chip" [class]="change() >= 0 ? 'good' : 'bad'" data-testid="score-change">
+        {{ change() >= 0 ? '▲' : '▼' }} {{ change() >= 0 ? '+' : '' }}{{ change() }} en 3 meses
+      </span>
+    </div>
+    <app-score-gauge [score]="store.score().score" [band]="store.score().band" />
+    <a class="btn" routerLink="/puntaje">Entender mi puntaje</a>
+  </article>
+  <article class="card">
+    <h2>Evolución (12 meses)</h2>
+    <app-line-chart [data]="chart()" ariaLabel="Evolución del puntaje en los últimos 12 meses" />
+    <p class="muted small">
+      Puntaje ficticio de Credit Lens. Cada central real usa su propio modelo.
+    </p>
+  </article>
+</section>
+
+<section class="kpis" aria-label="Indicadores">
+  @for (k of kpis(); track k.label) {
+    <article class="card kpi" [class]="k.tone">
+      <span class="kpi-label">{{ k.label }}</span>
+      <span class="kpi-value">{{ k.value }}</span>
+      <span class="small muted">{{ k.note }}</span>
+    </article>
+  }
+</section>
+
+<section class="grid-2">
+  <article class="card">
+    <h2>Lo que más te ayudaría</h2>
+    <ol class="actions">
+      @for (a of actions(); track a.id) {
+        <li>
+          <span class="dot" [class]="a.status"></span>
+          <div>
+            <strong>{{ a.label }}</strong>
+            <p class="small muted">{{ a.tip }}</p>
+          </div>
+          <span class="chip brand num">hasta +{{ a.gain }}</span>
+        </li>
+      }
+    </ol>
+    <a class="btn primary" routerLink="/simulador">Probar el simulador</a>
+  </article>
+  <article class="card">
+    <h2>Próximos pagos</h2>
+    <ul class="upcoming">
+      @for (u of upcoming(); track u.product.id) {
+        <li>
+          <div class="date">
+            <span class="d num">{{ u.date.getUTCDate() }}</span>
+            <span class="m">{{ month(u.date) }}</span>
+          </div>
+          <div class="who">
+            <strong>{{ u.product.entity }}</strong>
+            <span class="small muted">{{ typeLabel[u.product.type] }}</span>
+          </div>
+          <div class="amt">
+            <strong class="num">{{ cop(u.amount) }}</strong>
+            @if (u.product.overdueAmount) {
+              <span class="chip bad">incluye mora</span>
+            } @else {
+              <span class="small muted">en {{ u.daysLeft }} días</span>
+            }
+          </div>
+        </li>
+      }
+    </ul>
+    <a class="btn" routerLink="/obligaciones">Ver mis obligaciones</a>
+  </article>
+</section>
