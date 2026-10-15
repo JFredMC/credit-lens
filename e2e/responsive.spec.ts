@@ -7,6 +7,8 @@ const routes = [
   './simulador',
   './plan-deudas',
   './uso-de-cupos',
+  './permanencia',
+  './fuentes',
 ];
 
 test.describe('no horizontal overflow at 360 px', () => {

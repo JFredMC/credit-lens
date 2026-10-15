@@ -36,5 +36,15 @@ export const routes: Routes = [
     title: 'Uso de cupos · Credit Lens',
     loadComponent: () => import('./features/utilization/utilization').then((m) => m.Utilization),
   },
+  {
+    path: 'permanencia',
+    title: '¿Cuándo sale un reporte negativo? · Credit Lens',
+    loadComponent: () => import('./features/legal/permanence-page').then((m) => m.PermanencePage),
+  },
+  {
+    path: 'fuentes',
+    title: 'Fuentes · Credit Lens',
+    loadComponent: () => import('./features/legal/sources-page').then((m) => m.SourcesPage),
+  },
   { path: '**', redirectTo: '' },
 ];
