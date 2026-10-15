@@ -31,7 +31,9 @@
               "raf",
               "html2canvas",
               "dompurify",
-              "rgbcolor"
+              "rgbcolor",
+              "jszip",
+              "docx"
             ]
           },
           "configurations": {
