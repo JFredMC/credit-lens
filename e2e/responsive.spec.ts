@@ -1,6 +1,13 @@
 import { expect, test } from '@playwright/test';
 
-const routes = ['./', './puntaje', './obligaciones'];
+const routes = [
+  './',
+  './puntaje',
+  './obligaciones',
+  './simulador',
+  './plan-deudas',
+  './uso-de-cupos',
+];
 
 test.describe('no horizontal overflow at 360 px', () => {
   test.use({ viewport: { width: 360, height: 780 } });
