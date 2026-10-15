@@ -14,7 +14,7 @@ test('permanence: preset from Andrés and manual doubling', async ({ page }) => 
 test('fuentes links open in a new tab and point to official sites', async ({ page }) => {
   await page.goto('./fuentes');
   const links = page.locator('ul.sources a');
-  await expect(links).toHaveCount(5);
+  await expect(links).toHaveCount(6);
   for (const a of await links.all()) {
     await expect(a).toHaveAttribute('target', '_blank');
     expect(await a.getAttribute('href')).toMatch(/gov\.co/);

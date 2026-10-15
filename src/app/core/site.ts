@@ -47,5 +47,6 @@ export const NAV: NavItem[] = [
   },
   { path: '/reclamos', label: 'Reclamos', icon: 'M4 4h16v12H7l-3 3zM8 9h8M8 12h5' },
   { path: '/reporte', label: 'Exportar reporte', icon: 'M12 3v12M7 10l5 5 5-5M4 19h16' },
+  { path: '/aprende', label: 'Aprende', icon: 'M2 7l10-4 10 4-10 4zM6 9v5c0 2 3 3 6 3s6-1 6-3V9' },
   { path: '/fuentes', label: 'Fuentes', icon: 'M4 4h12l4 4v12H4zM8 12h8M8 16h5' },
 ];

@@ -67,6 +67,9 @@ Brand: JFredDev — discreet footer/“Hecho por JFredDev” link + portfolio li
 - P4 Calendario + Alertas + Huella de consulta.
 - P5 Permanencia + Reclamos (letter generator) + exports PDF/Excel/Word.
 - P6 Metas + Aprende + polish (a11y, responsive, Playwright screenshots, Lighthouse).
+
+Estado (15 de octubre de 2026): P0–P6 completas y publicadas. Las exportaciones quedaron en P5 junto a la tarjeta para compartir; Permanencia y Reclamos se adelantaron a P3. Pendiente: backend opcional.
+
 - P7 (optional) NestJS API + Postgres on Render/Supabase, auth, manual data entry.
 
 ## 7. MVP for GitHub Pages demo
