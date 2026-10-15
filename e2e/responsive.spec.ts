@@ -4,6 +4,7 @@ const routes = [
   './',
   './puntaje',
   './obligaciones',
+  './alertas',
   './calendario',
   './simulador',
   './plan-deudas',

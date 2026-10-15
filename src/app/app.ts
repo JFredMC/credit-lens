@@ -3,6 +3,7 @@ import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } fro
 import { APP_NAME, NAV, PORTFOLIO_URL, TAGLINE } from './core/site';
 import { ThemeService } from './core/theme.service';
 import { DemoStore } from './core/demo-store';
+import { AlertsStore } from './core/alerts-store';
 import { Icon } from './shared/icon';
 
 @Component({
@@ -15,6 +16,7 @@ import { Icon } from './shared/icon';
 export class App {
   protected readonly themeSvc = inject(ThemeService);
   protected readonly store = inject(DemoStore);
+  protected readonly alerts = inject(AlertsStore);
   protected readonly nav = NAV;
   protected readonly appName = APP_NAME;
   protected readonly tagline = TAGLINE;

@@ -48,6 +48,11 @@
             >
               <app-icon [d]="item.icon" [size]="18" />
               <span>{{ item.label }}</span>
+              @if (item.badge === 'alerts' && alerts.unread()) {
+                <span class="badge" [attr.aria-label]="alerts.unread() + ' sin leer'">{{
+                  alerts.unread()
+                }}</span>
+              }
             </a>
           </li>
         }
