@@ -62,6 +62,11 @@ export const routes: Routes = [
     loadComponent: () => import('./features/claims/claims').then((m) => m.Claims),
   },
   {
+    path: 'reporte',
+    title: 'Exportar reporte · Credit Lens',
+    loadComponent: () => import('./features/report/report-page').then((m) => m.ReportPage),
+  },
+  {
     path: 'fuentes',
     title: 'Fuentes · Credit Lens',
     loadComponent: () => import('./features/legal/sources-page').then((m) => m.SourcesPage),

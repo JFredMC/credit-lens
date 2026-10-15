@@ -12,6 +12,7 @@ const routes = [
   './uso-de-cupos',
   './permanencia',
   './reclamos',
+  './reporte',
   './fuentes',
 ];
 
