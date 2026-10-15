@@ -1,0 +1,63 @@
+<a class="skip" href="#main">Saltar al contenido</a>
+<div class="demo-strip" role="note" data-testid="disclaimer">
+  <strong>Demo con datos ficticios.</strong>
+  <span>No está afiliado a DataCrédito, Experian ni a ninguna central de riesgo.</span>
+</div>
+<div class="layout">
+  <aside class="side">
+    <div class="side-top">
+      <a class="brand" routerLink="/" aria-label="Credit Lens, inicio">
+        <img src="favicon.svg" alt="" width="34" height="34" />
+        <span class="brand-text">
+          <span class="brand-name">{{ appName }}</span>
+          <span class="brand-tag">{{ tagline }}</span>
+        </span>
+      </a>
+      <button
+        type="button"
+        class="icon-btn"
+        (click)="themeSvc.toggle()"
+        [attr.aria-label]="themeSvc.theme() === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'"
+        data-testid="theme-toggle"
+      >
+        <app-icon [d]="themeSvc.theme() === 'dark' ? sun : moon" />
+      </button>
+    </div>
+    <nav aria-label="Secciones">
+      <ul class="nav">
+        @for (item of nav; track item.path) {
+          <li>
+            <a
+              [routerLink]="item.path"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+            >
+              <app-icon [d]="item.icon" [size]="18" />
+              <span>{{ item.label }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+    <p class="side-sign">
+      Hecho por
+      <a [href]="portfolio" target="_blank" rel="noopener noreferrer">JFredDev</a>
+    </p>
+  </aside>
+  <div class="content">
+    <main id="main" class="main">
+      <router-outlet />
+    </main>
+    <footer class="footer">
+      <p>
+        <strong>{{ appName }}</strong> · Demo educativa con datos ficticios. No consulta centrales
+        de riesgo reales, no es asesoría legal ni financiera y no está afiliada a DataCrédito,
+        Experian ni TransUnion.
+      </p>
+      <p class="sign">
+        © {{ year }} · Hecho por
+        <a [href]="portfolio" target="_blank" rel="noopener noreferrer">JFredDev</a>
+      </p>
+    </footer>
+  </div>
+</div>

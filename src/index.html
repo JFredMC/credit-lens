@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es-CO">
+  <head>
+    <meta charset="utf-8" />
+    <title>Credit Lens · Tu crédito, claro</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Demo con datos ficticios: puntaje explicado, simulador, plan de deudas, permanencia de reportes negativos y derecho de petición. No afiliado a ninguna central de riesgo."
+    />
+    <meta name="theme-color" content="#4f46e5" />
+    <meta name="author" content="JFredDev" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('cl-theme');
+          if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.dataset['theme'] = t;
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>
