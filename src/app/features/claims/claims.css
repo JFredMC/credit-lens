@@ -1,0 +1,134 @@
+.layout {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 1100px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+  .preview {
+    position: sticky;
+    top: 1.5rem;
+  }
+}
+.form {
+  display: grid;
+  gap: 1rem;
+}
+.step {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  font-size: 0.78rem;
+  margin-right: 0.35rem;
+}
+.types {
+  display: grid;
+  gap: 0.5rem;
+}
+.type {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 0.6rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  cursor: pointer;
+}
+.type input {
+  grid-row: span 2;
+  margin-top: 0.2rem;
+  accent-color: var(--brand);
+}
+.type.on {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+}
+.two {
+  display: grid;
+  gap: 0 0.75rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 560px) {
+  .two {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+textarea {
+  resize: vertical;
+}
+.timeline {
+  list-style: none;
+  margin: 0 0 0.8rem;
+  padding: 0 0 0 1rem;
+  border-left: 2px solid var(--brand-soft);
+  display: grid;
+  gap: 0.6rem;
+}
+.timeline li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.86rem;
+}
+.timeline li::before {
+  content: '';
+  position: absolute;
+  left: -1.4rem;
+  top: 0.35rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brand);
+}
+.timeline span {
+  color: var(--muted);
+}
+.preview {
+  display: grid;
+  gap: 0.75rem;
+}
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+.paper {
+  background: #fff;
+  color: #1a1a1a;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  padding: clamp(1rem, 4vw, 2.2rem);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  max-height: 78vh;
+  overflow: auto;
+}
+.paper p {
+  margin: 0 0 0.7rem;
+}
+.paper .h {
+  margin: 0;
+}
+.paper .subject {
+  margin-top: 1rem;
+}
+.paper h3 {
+  font-family: inherit;
+  font-size: 0.86rem;
+  margin: 1rem 0 0.4rem;
+}
+.paper ol,
+.paper ul {
+  margin: 0 0 0.6rem;
+  padding-left: 1.2rem;
+}
+.sign {
+  margin-top: 1.4rem !important;
+}

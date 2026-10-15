@@ -20,3 +20,16 @@ test('fuentes links open in a new tab and point to official sites', async ({ pag
     expect(await a.getAttribute('href')).toMatch(/gov\.co/);
   }
 });
+
+test('reclamos: preview updates and PDF downloads', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('cl-persona', 'camila'));
+  await page.goto('./reclamos');
+  await page.getByTestId('type-sin-aviso').check();
+  await expect(page.locator('.paper')).toContainText('comunicación previa');
+  await expect(page.getByTestId('deadlines')).toContainText('2026');
+  const [download] = await Promise.all([
+    page.waitForEvent('download'),
+    page.getByTestId('download-pdf').click(),
+  ]);
+  expect(download.suggestedFilename()).toBe('derecho-de-peticion-sin-aviso.pdf');
+});

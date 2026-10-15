@@ -26,5 +26,6 @@ export const NAV: NavItem[] = [
     label: 'Reportes negativos',
     icon: 'M12 8v4l3 2M12 3a9 9 0 100 18 9 9 0 000-18z',
   },
+  { path: '/reclamos', label: 'Reclamos', icon: 'M4 4h16v12H7l-3 3zM8 9h8M8 12h5' },
   { path: '/fuentes', label: 'Fuentes', icon: 'M4 4h12l4 4v12H4zM8 12h8M8 16h5' },
 ];
