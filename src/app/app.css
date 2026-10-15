@@ -114,6 +114,29 @@
 .side-sign {
   display: none;
 }
+.persona {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.persona label {
+  font-weight: 700;
+  white-space: nowrap;
+}
+.persona select {
+  flex: 1;
+  min-width: 0;
+  padding: 0.4rem 0.55rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
 .content {
   min-width: 0;
   display: flex;
@@ -165,6 +188,11 @@
   .nav a {
     border-radius: 10px;
     padding: 0.6rem 0.75rem;
+  }
+  .persona {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 1.2rem;
   }
   .side-sign {
     display: block;

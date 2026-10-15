@@ -23,6 +23,19 @@
         <app-icon [d]="themeSvc.theme() === 'dark' ? sun : moon" />
       </button>
     </div>
+    <div class="persona">
+      <label for="persona-select">Perfil de demo</label>
+      <select
+        id="persona-select"
+        data-testid="persona-select"
+        [value]="store.persona().id"
+        (change)="store.select($any($event.target).value)"
+      >
+        @for (p of store.personas; track p.id) {
+          <option [value]="p.id">{{ p.name.split(' ')[0] }} · {{ p.shortLabel }}</option>
+        }
+      </select>
+    </div>
     <nav aria-label="Secciones">
       <ul class="nav">
         @for (item of nav; track item.path) {
