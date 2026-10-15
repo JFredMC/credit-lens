@@ -29,6 +29,11 @@ export const NAV: NavItem[] = [
   },
   { path: '/calendario', label: 'Calendario', icon: 'M3 5h18v16H3zM3 10h18M8 3v4M16 3v4' },
   {
+    path: '/metas',
+    label: 'Metas',
+    icon: 'M12 2a10 10 0 100 20 10 10 0 000-20zm0 5a5 5 0 100 10 5 5 0 000-10zm0 4a1 1 0 100 2 1 1 0 000-2z',
+  },
+  {
     path: '/simulador',
     label: 'Simulador',
     icon: 'M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6',

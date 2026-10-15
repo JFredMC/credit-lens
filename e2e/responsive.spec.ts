@@ -7,6 +7,7 @@ const routes = [
   './alertas',
   './huella',
   './calendario',
+  './metas',
   './simulador',
   './plan-deudas',
   './uso-de-cupos',

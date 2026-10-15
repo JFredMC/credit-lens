@@ -37,6 +37,11 @@ export const routes: Routes = [
     loadComponent: () => import('./features/calendar/calendar').then((m) => m.Calendar),
   },
   {
+    path: 'metas',
+    title: 'Metas · Credit Lens',
+    loadComponent: () => import('./features/goals/goals-page').then((m) => m.GoalsPage),
+  },
+  {
     path: 'simulador',
     title: 'Simulador · Credit Lens',
     loadComponent: () => import('./features/simulator/simulator').then((m) => m.Simulator),
