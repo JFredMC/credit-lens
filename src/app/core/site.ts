@@ -21,4 +21,10 @@ export const NAV: NavItem[] = [
   },
   { path: '/plan-deudas', label: 'Plan de deudas', icon: 'M3 17l6-6 4 4 8-8M14 7h7v7' },
   { path: '/uso-de-cupos', label: 'Uso de cupos', icon: 'M2 7h20v12H2zM2 11h20M6 15h4' },
+  {
+    path: '/permanencia',
+    label: 'Reportes negativos',
+    icon: 'M12 8v4l3 2M12 3a9 9 0 100 18 9 9 0 000-18z',
+  },
+  { path: '/fuentes', label: 'Fuentes', icon: 'M4 4h12l4 4v12H4zM8 12h8M8 16h5' },
 ];

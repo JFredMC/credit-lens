@@ -16,10 +16,13 @@ Brand: JFredDev — discreet footer/“Hecho por JFredDev” link + portfolio li
 
 - DataCrédito Experian consumer: score + historia de crédito, alertas (consultas/cambios), “Mi Plan”/plans de pago (paid tiers), simulador de score, huella de consulta (who consulted you), hábito de pago per obligation, reclamos online, ofertas de crédito.
 - Common complaints: paywalls for basic info, confusing score with no actionable “why”, dated UI, slow/opaque reclamos, upselling, hard to see when a negative report expires.
-- Legal context to surface as education (not legal advice):
-  - Ley 1266 de 2008 (habeas data financiero): right to know, update, rectify; free consultation (1 per month); claims to fuente/operador, response within 15 business days; prior notice before negative report.
-  - Ley 2157 de 2021 (“borrón y cuenta nueva”): negative data permanence = double the time in mora, max 4 years from payment; prior notice 20 calendar days before reporting; small debts (≤15% SMMLV) require 2 notices; one-time amnesty for those who paid.
-  - Ley 1581 de 2012 (personal data) referenced in privacy note.
+- Legal context (verified 2026-10-14 against secretariasenado.gov.co, funcionpublica.gov.co, sic.gov.co; see in-app «Fuentes»):
+  - Self-consultation is free **always and by any means** (art. 10 par. 2, mod. Ley 2157) — corrected: not "1 per month".
+  - Permanence: double the arrears time, max 4 years from payment (art. 13); expiry 8 years from arrears start (art. 13 par. 1).
+  - Prior notice: report only 20 calendar days after notice (art. 12); debts ≤ 15 % SMMLV need 2 notices on different days + 20 days (art. 13 par. 2; SMMLV 2026 = $1.750.905 → $262.635).
+  - No prior notice: immediate removal if paid; otherwise remove and notify first (art. 12 par.).
+  - Report max 18 months after arrears start (art. 8 num. 11).
+  - Claims: 15 business days (+8), «reclamo en trámite» within 2 business days, silence = resolved in favour (art. 16 II); queries 10 (+5) business days (art. 16 I). Escalate to SIC (or SFC for supervised entities) proving the prior claim.
 
 ## 3. Proposed repo name (all verified free under JFredMC)
 
