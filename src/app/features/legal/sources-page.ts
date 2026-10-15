@@ -11,7 +11,8 @@ import { FACTS, SOURCES } from '../../domain/legal';
         <h1>De dónde sale cada regla</h1>
         <p class="lead">
           Las reglas legales que usa Credit Lens se verificaron contra los textos oficiales el 14 de
-          octubre de 2026. Es información educativa: no reemplaza la asesoría de un abogado.
+          octubre de 2026; la tasa de usura, el 15 de octubre de 2026. Es información educativa: no
+          reemplaza la asesoría de un abogado.
         </p>
       </div>
     </header>

@@ -14,6 +14,7 @@ const routes = [
   './permanencia',
   './reclamos',
   './reporte',
+  './aprende',
   './fuentes',
 ];
 

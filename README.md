@@ -19,6 +19,12 @@
 | **Uso de cupos**       | Uso total y por tarjeta con meta del 30 % y cuánto abonar para llegar.                                                                               |
 | **Reportes negativos** | Fecha estimada de salida de un dato negativo (Ley 1266 de 2008, mod. Ley 2157 de 2021).                                                              |
 | **Reclamos**           | Derecho de petición en 3 pasos, vista previa y PDF; seguimiento de plazos en días hábiles con festivos de Colombia.                                  |
+| **Alertas**            | Centro de alertas ficticias (consultas nuevas, riesgo de mora, uso de cupos sobre un umbral, cambios en el reporte) con filtros y leídas/no leídas.  |
+| **Huella de consulta** | Quién consultó tu historial, cuáles cuentan para el puntaje y por qué tus propias consultas no te afectan.                                           |
+| **Calendario**         | Calendario mensual de cuotas con exportación a .ics (Google Calendar, Outlook, iPhone) y recordatorio 2 días antes.                                  |
+| **Metas**              | Metas sugeridas (subir de banda, uso ≤ 30 %, ponerse al día) con progreso, fecha objetivo y metas propias.                                           |
+| **Exportar reporte**   | Reporte completo en PDF, Excel y Word, y tarjeta para compartir sin datos personales. Las librerías se cargan solo al exportar.                      |
+| **Aprende**            | Lecciones cortas, mitos frecuentes y conversor de tasa E.A. a mensual con la usura vigente, cada uno con su norma.                                   |
 | **Fuentes**            | Cada regla legal con su artículo y enlace oficial.                                                                                                   |
 
 Tres perfiles ficticios (buena pagadora, en recuperación, sobreendeudada), tema claro/oscuro y diseño responsive desde 360 px.
@@ -31,10 +37,12 @@ Verificadas el 14 de octubre de 2026 contra los textos oficiales ([Senado: Ley 1
 - Permanencia: doble del tiempo de mora, máximo 4 años desde el pago; caducidad a los 8 años desde el inicio de la mora (art. 13).
 - Aviso previo: 20 días calendario (art. 12); deudas ≤ 15 % del SMMLV ($ 262.635 en 2026): dos avisos en días distintos (art. 13 par. 2).
 - Reclamos: 15 días hábiles (+8), «reclamo en trámite» en 2 días hábiles, silencio a favor del titular (art. 16 II); consultas: 10 (+5) días hábiles.
+- Alerta gratuita por obligaciones nuevas en 5 días hábiles (Ley 2157, art. 10); suplantación: cotejo en 10 días y leyenda «Víctima de Falsedad Personal» (art. 16 II num. 7).
+- Usura de octubre de 2026 para consumo y ordinario: 28,59 % E.A. ([Superfinanciera, Res. 1472 de 2026](https://www.superfinanciera.gov.co/publicaciones/10116267/superfinanciera-certifica-el-interes-bancario-corriente/)).
 
 ## Stack
 
-Angular 22 (standalone, zoneless, signals, OnPush) · TypeScript · CSS propio · jsPDF · Vitest · Playwright (escritorio + móvil) · ESLint · Prettier · pnpm · GitHub Actions + GitHub Pages.
+Angular 22 (standalone, zoneless, signals, OnPush) · TypeScript · CSS propio · jsPDF · docx · write-excel-file · Vitest · Playwright (escritorio + móvil) · ESLint · Prettier · pnpm · GitHub Actions + GitHub Pages.
 
 La lógica (puntaje, simulador, plan de deudas, permanencia, días hábiles, carta) vive en funciones puras en `src/app/domain` con pruebas unitarias.
 
@@ -55,7 +63,7 @@ pnpm build:pages && pnpm e2e   # Playwright contra el build de Pages
 
 ## Próximas fases
 
-Calendario de pagos (.ics), alertas, huella de consulta, metas, sección «Aprende», exportar el reporte completo (PDF/Excel/Word) y backend opcional (NestJS + Postgres en Render/Supabase). Ver [`docs/PLAN.md`](docs/PLAN.md).
+Backend opcional (NestJS + Postgres) para guardar metas y alertas entre dispositivos. Ver [`docs/PLAN.md`](docs/PLAN.md).
 
 ---
 

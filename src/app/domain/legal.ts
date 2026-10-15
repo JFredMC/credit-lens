@@ -1,6 +1,6 @@
 /**
  * Legal figures used by the app. Each one was checked against the official text
- * (see SOURCES) on 2026-10-14. Educational information, not legal advice.
+ * (see SOURCES) on 2026-10-14 (usury rate: 2026-10-15). Educational information, not legal advice.
  */
 export interface LegalSource {
   id: string;
@@ -40,6 +40,13 @@ export const SOURCES = {
     publisher: 'Presidencia de la República',
     url: 'https://dapre.presidencia.gov.co/normativa/normativa/DECRETO%20No.%200159%20DEL%2019%20DE%20FEBRERO%20DE%202026.pdf',
   },
+  sfcIbc: {
+    id: 'sfcIbc',
+    title:
+      'Superfinanciera certifica el Interés Bancario Corriente (octubre de 2026, Resolución 1472)',
+    publisher: 'Superintendencia Financiera de Colombia',
+    url: 'https://www.superfinanciera.gov.co/publicaciones/10116267/superfinanciera-certifica-el-interes-bancario-corriente/',
+  },
 } satisfies Record<string, LegalSource>;
 
 export type SourceId = keyof typeof SOURCES;
@@ -62,6 +69,14 @@ export const SMALL_DEBT_THRESHOLD_2026 = Math.floor(SMMLV_2026 * SMALL_DEBT_SMML
 /** Art. 16 II num. 3 and 8: claims answered within 15 business days, extendable 8 more. */
 export const CLAIM_BUSINESS_DAYS = 15;
 export const CLAIM_EXTENSION_BUSINESS_DAYS = 8;
+/** Ley 2157 art. 10: alert e-mail within 5 business days after a new obligation is reported. */
+export const NEW_OBLIGATION_ALERT_BUSINESS_DAYS = 5;
+/** Art. 16 II num. 7: the source compares documents within 10 days in identity-theft cases. */
+export const IDENTITY_THEFT_REVIEW_DAYS = 10;
+/** SFC, Resolución 1472 de 2026: consumer & ordinary credit, 1–31 Oct 2026 (effective annual). */
+export const IBC_CONSUMO_OCT_2026 = 0.1906;
+export const USURY_CONSUMO_OCT_2026 = 0.2859;
+export const USURY_VALID_LABEL = '1 al 31 de octubre de 2026';
 /** Art. 16 I: queries (consultas) answered within 10 business days, extendable 5 more. */
 export const QUERY_BUSINESS_DAYS = 10;
 export const QUERY_EXTENSION_BUSINESS_DAYS = 5;
@@ -135,5 +150,41 @@ export const FACTS: LegalFact[] = [
     text: 'Puedes reclamar ante la fuente (la entidad que te reportó) o ante el operador (la central de riesgo). Si no responden o no estás de acuerdo, acude a la SIC; si la entidad es vigilada por la Superintendencia Financiera, ante esa entidad. Debes probar el reclamo previo.',
     cite: 'SIC, hábeas data financiero; Ley 1266 de 2008, arts. 16 y 17',
     source: 'sic',
+  },
+  {
+    title: 'Alerta gratis por obligaciones nuevas',
+    text: 'Las centrales de riesgo deben ofrecer un aplicativo digital y gratuito: registras tu correo y te avisan, dentro de 5 días hábiles, cuando reportan una obligación nueva a tu nombre. Sirve para detectar suplantaciones.',
+    cite: 'Ley 2157 de 2021, art. 10',
+    source: 'ley2157',
+  },
+  {
+    title: 'Si te suplantaron',
+    text: 'Presenta una petición de corrección ante la fuente con tus soportes. La fuente debe cotejar los documentos en 10 días y, con tu solicitud, el registro debe reflejar que no adquiriste la obligación, con la leyenda «Víctima de Falsedad Personal».',
+    cite: 'Ley 1266 de 2008, art. 16 II num. 7 (adicionado por el art. 7 de la Ley 2157 de 2021)',
+    source: 'ley2157',
+  },
+  {
+    title: 'Un reporte negativo no basta para negarte un crédito',
+    text: 'Las entidades deben analizar tu información junto con otros factores y no pueden negar un crédito basándose solo en el reporte negativo. Si una entidad financiera te rechaza, puedes pedir por escrito las razones objetivas.',
+    cite: 'Ley 1266 de 2008, art. 10 par. 1 (modificado por el art. 5 de la Ley 2157 de 2021)',
+    source: 'ley2157',
+  },
+  {
+    title: 'Al salir el dato negativo, se actualiza tu puntaje',
+    text: 'Cuando se retira un dato negativo, cualquier calificación o puntaje que dependa de él debe actualizarse al mismo tiempo.',
+    cite: 'Ley 1266 de 2008, art. 13 par. 3 (adicionado por el art. 3 de la Ley 2157 de 2021)',
+    source: 'ley2157',
+  },
+  {
+    title: 'Puedes saber quién consultó tus datos',
+    text: 'Frente a las centrales de riesgo tienes derecho a pedir información sobre los usuarios autorizados para obtener tu información y a pedir prueba de la autorización.',
+    cite: 'Ley 1266 de 2008, art. 6 num. 1.3 y 1.4',
+    source: 'ley1266fp',
+  },
+  {
+    title: 'Tasa de usura de octubre de 2026',
+    text: 'Para crédito de consumo y ordinario, el interés bancario corriente certificado es 19,06 % E.A. y el máximo de interés remuneratorio y de mora (tasa de usura) es 28,59 % E.A., vigente del 1 al 31 de octubre de 2026. Cambia cada mes.',
+    cite: 'Superintendencia Financiera, Resolución 1472 de 2026; Código de Comercio art. 884; Código Penal art. 305',
+    source: 'sfcIbc',
   },
 ];
