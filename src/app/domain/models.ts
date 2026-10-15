@@ -33,6 +33,8 @@ export interface Inquiry {
   date: string;
   entity: string;
   purpose: string;
+  /** The person checked their own report (never affects the score). */
+  self?: boolean;
 }
 
 export interface Persona {
